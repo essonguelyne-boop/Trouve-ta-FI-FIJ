@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0C1824">
 <meta name="description" content="Trouve la Famille d'Impact ou la Famille d'Impact Jeunes la plus proche de chez toi — ICC Bordeaux.">
 <title>Famille d'Impact — Trouve ta FI / FIJ</title>
-<link rel="icon" href="logo-fi.jpg">
+<link rel="icon" href="logo-fi.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <style>
@@ -29,10 +29,10 @@
   .lead{color:var(--muted);max-width:50ch}
 
   /* ---------- Header logos ---------- */
-  .brand{display:flex;justify-content:center;align-items:center;gap:18px;padding:18px 16px 6px}
-  .brand img{width:96px;height:96px;border-radius:22px;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,.45)}
-  .brand .sep{width:1px;height:56px;background:var(--line)}
-  @media(min-width:640px){.brand img{width:120px;height:120px}}
+  .brand{display:flex;justify-content:center;align-items:center;gap:22px;padding:22px 16px 8px}
+  .brand img{width:110px;object-fit:contain;filter:drop-shadow(0 6px 18px rgba(0,0,0,.5))}
+  .brand .sep{width:1px;height:64px;background:var(--line)}
+  @media(min-width:640px){.brand img{width:140px}}
 
   /* ---------- Hero sections (inspiré de familledimpact.com) ---------- */
   .hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;padding:34px 22px 40px;overflow:hidden;isolation:isolate}
@@ -130,7 +130,7 @@
   td .btn-sm{margin-right:4px}
   .toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-bottom:14px}
   .lock{max-width:420px;margin:60px auto;text-align:center}
-  .lock img{width:72px;height:72px;border-radius:18px;margin-bottom:14px}
+  .lock img{width:88px;margin-bottom:14px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4))}
 
   /* ---------- Nav / modal / toast ---------- */
   .nav{position:fixed;left:0;right:0;bottom:0;height:var(--nav);background:rgba(12,24,36,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:50}
@@ -153,9 +153,9 @@
 <!-- ================= ACCUEIL ================= -->
 <section class="view active" id="v-home">
   <div class="brand">
-    <img src="logo-fi.jpg" alt="Famille d'Impact — L'amour fraternel à proximité">
+    <img src="logo-fi.png" alt="Famille d'Impact — L'amour fraternel à proximité">
     <div class="sep"></div>
-    <img src="logo-fij.jpg" alt="Famille d'Impact Jeunes">
+    <img src="logo-fij.png" alt="Famille d'Impact Jeunes">
   </div>
 
   <section class="hero fi">
@@ -246,7 +246,7 @@
 <section class="view" id="v-admin">
   <div class="wrap">
     <div class="lock" id="lock">
-      <img src="logo-fi.jpg" alt="">
+      <img src="logo-fi.png" alt="">
       <h2>Espace administration</h2>
       <p class="lead" style="margin:6px auto 18px">Réservé à l'équipe de coordination.</p>
       <div class="field"><input id="pw" type="password" placeholder="Mot de passe" onkeydown="if(event.key==='Enter')unlock()"></div>
