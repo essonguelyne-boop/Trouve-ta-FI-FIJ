@@ -133,8 +133,8 @@
   .lock img{width:88px;margin-bottom:14px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4))}
 
   /* ---------- Nav / modal / toast ---------- */
-  .nav{position:fixed;left:0;right:0;bottom:0;height:var(--nav);background:rgba(12,24,36,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:50}
-  .nav button{background:none;color:var(--muted);font-size:11px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:0}
+  .nav{position:fixed;left:0;right:0;bottom:0;height:var(--nav);background:rgba(12,24,36,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:50}
+  .nav button{background:none;color:var(--muted);font-size:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:0}
   .nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .nav button.on{color:var(--text)}
   .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:flex-end;justify-content:center;z-index:100}
@@ -228,6 +228,50 @@
     </div>
 
     <button class="btn btn-primary" onclick="findFamilies()">Trouver ma famille</button>
+
+  </div>
+</section>
+
+
+<!-- ================= ACCUEILLIR UNE FI CHEZ MOI ================= -->
+<section class="view" id="v-hote">
+  <div class="wrap">
+    <h2>Accueillir une FI chez moi</h2>
+    <p class="lead" style="margin-bottom:18px">Tu souhaites ouvrir ta maison pour y accueillir une Famille d'Impact ? Merci pour ton élan d'hospitalité — laisse-nous tes coordonnées.</p>
+    <div class="card">
+      <h3>Tes coordonnées</h3>
+      <div class="row">
+        <div class="field" id="f-hote-prenom"><label>Prénom *</label><input id="hote-prenom" autocomplete="given-name"><div class="err">Prénom requis</div></div>
+        <div class="field" id="f-hote-nom"><label>Nom *</label><input id="hote-nom" autocomplete="family-name"><div class="err">Nom requis</div></div>
+      </div>
+      <div class="field" id="f-hote-tel"><label>Téléphone *</label><input id="hote-tel" type="tel" placeholder="06 12 34 56 78" autocomplete="tel"><div class="err">Téléphone requis</div></div>
+      <div class="field"><label>Ville / quartier</label><input id="hote-ville" placeholder="ex. Pessac"></div>
+      <div class="field"><label>Combien de personnes peux-tu accueillir ?</label><select id="hote-cap"><option>Moins de 8</option><option>8 à 15</option><option>Plus de 15</option></select></div>
+      <div class="field"><label>Message (optionnel)</label><input id="hote-msg" placeholder="Précisions, disponibilités…"></div>
+    </div>
+    <button class="btn btn-primary" onclick="submitForm('hote')">Envoyer ma demande</button>
+    <p class="hint" style="margin-top:12px">L'équipe ICC te recontactera par téléphone. Tes informations ne sont pas partagées.</p>
+  </div>
+</section>
+
+<!-- ================= DEVENIR PILOTE / RESPONSABLE ================= -->
+<section class="view" id="v-pilote">
+  <div class="wrap">
+    <h2>Devenir pilote / responsable</h2>
+    <p class="lead" style="margin-bottom:18px">Tu souhaites devenir pilote ou responsable d'une Famille d'Impact ? Merci pour ton envie de servir — laisse-nous tes coordonnées.</p>
+    <div class="card">
+      <h3>Tes coordonnées</h3>
+      <div class="row">
+        <div class="field" id="f-pilote-prenom"><label>Prénom *</label><input id="pilote-prenom" autocomplete="given-name"><div class="err">Prénom requis</div></div>
+        <div class="field" id="f-pilote-nom"><label>Nom *</label><input id="pilote-nom" autocomplete="family-name"><div class="err">Nom requis</div></div>
+      </div>
+      <div class="field" id="f-pilote-tel"><label>Téléphone *</label><input id="pilote-tel" type="tel" placeholder="06 12 34 56 78" autocomplete="tel"><div class="err">Téléphone requis</div></div>
+      <div class="field"><label>Ville / quartier</label><input id="pilote-ville" placeholder="ex. Pessac"></div>
+      <div class="field"><label>Tu souhaites piloter</label><select id="pilote-type"><option value="FI">une FI (adultes, 26+)</option><option value="FIJ">une FIJ (jeunes, moins de 26 ans)</option></select></div>
+      <div class="field"><label>Message (optionnel)</label><input id="pilote-msg" placeholder="Précisions, disponibilités…"></div>
+    </div>
+    <button class="btn btn-primary" onclick="submitForm('pilote')">Envoyer ma demande</button>
+    <p class="hint" style="margin-top:12px">L'équipe ICC te recontactera par téléphone. Tes informations ne sont pas partagées.</p>
   </div>
 </section>
 
@@ -256,7 +300,13 @@
 
     <div id="adminbody" style="display:none">
       <h2>Administration Familles d'Impact</h2>
-      <p class="lead" style="margin-bottom:16px">Gère les familles, leurs zones, pilotes, effectifs et liens WhatsApp.</p>
+      <p class="lead" style="margin-bottom:16px">Gère les familles, leurs zones, pilotes, effectifs, liens WhatsApp et les candidatures reçues.</p>
+      <div class="chips" style="margin-bottom:18px">
+        <button class="chip on" id="tab-fam" onclick="adminTab('fam')">Familles</button>
+        <button class="chip" id="tab-cand" onclick="adminTab('cand')">Candidatures (<span id="cand-count">0</span>)</button>
+      </div>
+
+      <div id="admin-fam">
       <div class="chips" id="filters">
         <button class="chip on" data-f="all">Toutes</button>
         <button class="chip" data-f="FI">FI — Adultes</button>
@@ -282,6 +332,21 @@
         </table>
       </div>
       <p class="footer">Les données sont enregistrées automatiquement dans ce navigateur.</p>
+      </div>
+
+      <div id="admin-cand" style="display:none">
+        <p class="lead" style="margin-bottom:16px">Demandes envoyées via « Accueillir une FI » et « Devenir pilote ». Données personnelles sensibles — ne pas partager.</p>
+        <div class="toolbar">
+          <div></div>
+          <button class="btn btn-ghost btn-sm" onclick="lockAdmin()">Se déconnecter</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date</th><th>Type</th><th>Nom</th><th>Téléphone</th><th>Ville</th><th>Actions</th></tr></thead>
+            <tbody id="cand-tbody"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -291,6 +356,8 @@
   <button data-v="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>Accueil</button>
   <button data-v="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Recherche</button>
   <button data-v="results"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Résultats</button>
+  <button data-v="hote"><svg viewBox="0 0 24 24"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>Accueillir</button>
+  <button data-v="pilote"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Pilote</button>
 </nav>
 
 <!-- MODAL REJOINDRE -->
@@ -346,30 +413,31 @@
    n'est stockée ici ; lat/lng servent uniquement au calcul.
    ========================================================= */
 const SEED = [
-  {id:1,  nom:"FIJ Timothée Centre", type:"FIJ", zone:"Saint-Genès, Bordeaux",  lat:44.8240, lng:-0.5725, resp:"Juliette Renvoisé",                 wa:"", actif:true,  membres:38},
-  {id:2,  nom:"FIJ Timothée Sud",    type:"FIJ", zone:"Bordeaux Sud",           lat:44.8240, lng:-0.5725, resp:"Yédidia",                            wa:"", actif:false, membres:null},
-  {id:3,  nom:"FIJ Paul",            type:"FIJ", zone:"Talence",                lat:44.8065, lng:-0.5960, resp:"Joaline Vertueil",                   wa:"", actif:true,  membres:26},
-  {id:4,  nom:"FIJ Néhémie",         type:"FIJ", zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Ismaël",                             wa:"", actif:true,  membres:null},
-  {id:5,  nom:"FI Néhémie",          type:"FI",  zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Dudley & Phalande Cadet",            wa:"", actif:true,  membres:10},
-  {id:6,  nom:"FI David",            type:"FI",  zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Christelle Amonkan",                 wa:"", actif:true,  membres:13},
-  {id:7,  nom:"FI Joseph",           type:"FI",  zone:"Le Haillan",             lat:44.8633, lng:-0.6650, resp:"Gaëlle Mutombo",                     wa:"", actif:true,  membres:6},
-  {id:8,  nom:"FI Doxa",             type:"FI",  zone:"Grand Parc, Bordeaux",   lat:44.8594, lng:-0.5818, resp:"Marietta Rogers / Madeleine",        wa:"", actif:true,  membres:14},
-  {id:9,  nom:"FI Samuel",           type:"FI",  zone:"Blanquefort",            lat:44.9080, lng:-0.6280, resp:"Laetitia Nkibikondolo",              wa:"", actif:true,  membres:9},
-  {id:10, nom:"FI Buisson Ardent",   type:"FI",  zone:"Bacalan / Cité du Vin",  lat:44.8605, lng:-0.5510, resp:"Angela Kennedy",                     wa:"", actif:false, membres:15},
-  {id:11, nom:"FIJ Buisson Ardent",  type:"FIJ", zone:"Bacalan / Cité du Vin",  lat:44.8605, lng:-0.5510, resp:"Christian Ekomie-Bie",               wa:"", actif:true,  membres:null},
-  {id:12, nom:"FI Jean David",       type:"FI",  zone:"Bassens",                lat:44.9020, lng:-0.5320, resp:"Gabin Ahiave",                       wa:"", actif:true,  membres:10},
-  {id:13, nom:"FI Gédéon",           type:"FI",  zone:"Haut Cenon",             lat:44.8460, lng:-0.5330, resp:"Yves Mankou",                        wa:"", actif:true,  membres:30},
-  {id:14, nom:"FI Amour",            type:"FI",  zone:"Lormont",                lat:44.8780, lng:-0.5220, resp:"Candide Houngnandan",                wa:"", actif:false, membres:30},
-  {id:15, nom:"FI Bègles",           type:"FI",  zone:"Bègles / Villenave-d'Ornon", lat:44.8080, lng:-0.5490, resp:"Doliane",                        wa:"", actif:true,  membres:9},
-  {id:16, nom:"FIJ Esaïe",           type:"FIJ", zone:"Mérignac",               lat:44.8420, lng:-0.6450, resp:"Nepthalie Desmornes",                wa:"", actif:true,  membres:13},
-  {id:17, nom:"FIJ Obed",            type:"FIJ", zone:"Bordeaux Centre",        lat:44.8378, lng:-0.5792, resp:"Renée Ogoula",                       wa:"", actif:true,  membres:null},
-  {id:18, nom:"FIJ Éclat",           type:"FIJ", zone:"Lormont",                lat:44.8780, lng:-0.5220, resp:"Michaël",                            wa:"", actif:true,  membres:null},
+  {id:1,  nom:"FIJ Timothée Centre", type:"FIJ", zone:"Saint-Genès, Bordeaux",  lat:44.8240, lng:-0.5725, resp:"Juliette Renvoisé",                 wa:"https://chat.whatsapp.com/Hchj3NtfV0RF9oMtt44bW1", actif:true,  membres:38},
+  {id:2,  nom:"FIJ Timothée Sud",    type:"FIJ", zone:"Bordeaux Sud",           lat:44.8240, lng:-0.5725, resp:"Yédidia Mognon",                     wa:"https://chat.whatsapp.com/GXNG8KEZllfFC0lYwEgi63", actif:true, membres:null},
+  {id:3,  nom:"FIJ Paul",            type:"FIJ", zone:"Talence",                lat:44.8065, lng:-0.5960, resp:"Joaline Vertueil",                   wa:"https://chat.whatsapp.com/IKrGMJvf1Vq4sWHRef4COO", actif:true,  membres:26},
+  {id:4,  nom:"FIJ Néhémie",         type:"FIJ", zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Ismaël",                             wa:"https://chat.whatsapp.com/FzVIkcxGFMr7h8oocCu0oV", actif:true,  membres:null},
+  {id:5,  nom:"FI Néhémie",          type:"FI",  zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Dudley & Phalande Cadet",            wa:"https://chat.whatsapp.com/I6y4vEsc6VrCB2S7mWAKKf", actif:true,  membres:10},
+  {id:6,  nom:"FI David",            type:"FI",  zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Christelle Amonkan",                 wa:"https://chat.whatsapp.com/GozKph3XA3kGl24RxGZadQ", actif:true,  membres:13},
+  {id:7,  nom:"FI Joseph",           type:"FI",  zone:"Le Haillan",             lat:44.8633, lng:-0.6650, resp:"Gaëlle Mutombo",                     wa:"https://chat.whatsapp.com/CfupD35XytE59yoF98kav5", actif:true,  membres:6},
+  {id:8,  nom:"FI Doxa",             type:"FI",  zone:"Grand Parc, Bordeaux",   lat:44.8594, lng:-0.5818, resp:"Marietta Rogers / Madeleine",        wa:"https://chat.whatsapp.com/LJ0VqS0qiZ44c9V65nwss2", actif:true,  membres:14},
+  {id:9,  nom:"FI Samuel",           type:"FI",  zone:"Blanquefort",            lat:44.9080, lng:-0.6280, resp:"Laetitia Nkibikondolo",              wa:"https://chat.whatsapp.com/DHoN0kWiyUjCDZk41XFcCW", actif:true,  membres:9},
+  {id:10, nom:"FI Buisson Ardent",   type:"FI",  zone:"Bacalan / Cité du Vin",  lat:44.8605, lng:-0.5510, resp:"Angela Kennedy",                     wa:"https://chat.whatsapp.com/ID1j5wBaeYk1XDr5bWk0fD", actif:true, membres:15},
+  {id:11, nom:"FIJ Buisson Ardent",  type:"FIJ", zone:"Bacalan / Cité du Vin",  lat:44.8605, lng:-0.5510, resp:"Christian Ekomie-Bie",               wa:"https://chat.whatsapp.com/LNzjoFfntHK6SEgHOpTmFV", actif:true,  membres:null},
+  {id:12, nom:"FI Jean David",       type:"FI",  zone:"Bassens",                lat:44.9020, lng:-0.5320, resp:"Gabin Ahiave",                       wa:"https://chat.whatsapp.com/GjgSkE8TugMIouCprljbyt", actif:true,  membres:10},
+  {id:13, nom:"FI Gédéon",           type:"FI",  zone:"Haut Cenon",             lat:44.8460, lng:-0.5330, resp:"Yves Mankou",                        wa:"https://chat.whatsapp.com/HAM3BupTXcFG9pTFNoqTod", actif:true,  membres:30},
+  {id:14, nom:"FI Amour",            type:"FI",  zone:"Lormont",                lat:44.8780, lng:-0.5220, resp:"Candide Houngnandan",                wa:"https://chat.whatsapp.com/G3n7s0kZHs4CU1zTzryvX8", actif:true, membres:30},
+  {id:15, nom:"FI Bègles",           type:"FI",  zone:"Bègles / Villenave-d'Ornon", lat:44.8080, lng:-0.5490, resp:"Doliane",                        wa:"https://chat.whatsapp.com/KzLotIsAmi38p3ClFzvDhm", actif:true,  membres:9},
+  {id:16, nom:"FIJ Esaïe",           type:"FIJ", zone:"Mérignac",               lat:44.8420, lng:-0.6450, resp:"Nepthalie Desmornes",                wa:"https://chat.whatsapp.com/CvF6ESVyILk0XtvldSLSM4", actif:true,  membres:13},
+  {id:17, nom:"FIJ Obed",            type:"FIJ", zone:"Bordeaux Centre",        lat:44.8378, lng:-0.5792, resp:"Renée Ogoula",                       wa:"https://chat.whatsapp.com/CU3pH98jo742dHJyPzIK4w", actif:true,  membres:null},
+  {id:18, nom:"FIJ Éclat",           type:"FIJ", zone:"Lormont",                lat:44.8780, lng:-0.5220, resp:"Mickaël Ngan-Otsaghe",                            wa:"https://chat.whatsapp.com/DoFVHpoklskKdYY5ZDZXS5", actif:true,  membres:null},
   {id:19, nom:"FI Esther",           type:"FI",  zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Abigaël Mambote",                    wa:"", actif:false, membres:22},
-  {id:20, nom:"FIJ Esther",          type:"FIJ", zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Ishnel & Anaëlle",                   wa:"", actif:true,  membres:null},
-  {id:21, nom:"FI Dorcas",           type:"FI",  zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Marie-Hervé Adjien",                 wa:"", actif:true,  membres:2},
-  {id:22, nom:"FI Épaphras",         type:"FI",  zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Marie-Sidonie Manesson",             wa:"", actif:true,  membres:17},
-  {id:23, nom:"FI Mouvement",        type:"FI",  zone:"Périgueux",              lat:45.1848, lng:0.7212,  resp:"Maëva & Mame",                       wa:"", actif:true,  membres:13},
-  {id:24, nom:"FI Josué",            type:"FI",  zone:"Bergerac",               lat:44.8508, lng:0.4813,  resp:"Valérie Fleret / Épiphanie Ananivi", wa:"", actif:true,  membres:8},
+  {id:20, nom:"FIJ Esther",          type:"FIJ", zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Ishnel & Anaëlle",                   wa:"https://chat.whatsapp.com/JSVBKlYrlNtAGiVSPmeXoL", actif:true,  membres:null},
+  {id:21, nom:"FI Dorcas",           type:"FI",  zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Marie-Hervé Adjien",                 wa:"https://chat.whatsapp.com/Iypexuypcl7IxWOGyuYvAK", actif:true,  membres:2},
+  {id:22, nom:"FI Épaphras",         type:"FI",  zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Marie-Sidonie Manesson",             wa:"https://chat.whatsapp.com/CxYVwhovMTmARwZu1X2zFc", actif:true,  membres:17},
+  {id:23, nom:"FI Mouvement",        type:"FI",  zone:"Périgueux",              lat:45.1848, lng:0.7212,  resp:"Maëva Deme",                       wa:"https://chat.whatsapp.com/Fqvd7XwVZyIDliWyxZxHP7", actif:true,  membres:13},
+  {id:24, nom:"FI Josué",            type:"FI",  zone:"Bergerac",               lat:44.8508, lng:0.4813,  resp:"Épiphanie Matchon & Valérie Fleret", wa:"https://chat.whatsapp.com/K89EQOqR6PqHw3Fh1svmUs", actif:true,  membres:8},
+  {id:26, nom:"FI Saint-Loubès",        type:"FI",  zone:"Saint-Loubès",           lat:44.9150, lng:-0.4280, resp:"Nelly",                              wa:"https://chat.whatsapp.com/KNrijc4rfzD5TbCw0pLfSK", actif:true,  membres:null},
   {id:25, nom:"FI Libourne",         type:"FI",  zone:"Libourne",               lat:44.9150, lng:-0.2420, resp:"Merveil & Jocelyne Maliro",          wa:"", actif:true,  membres:8},
 ];
 
@@ -378,7 +446,7 @@ const SEED = [
    puis colle l'empreinte obtenue ici. */
 const ADMIN_HASH = "0c59e405607552899fe446695148d2d5d76cf66ce486d002c6206a2340560a58";
 
-let families = [], recent = [], filter = "all", sort = {key:"nom", dir:1};
+let families = [], recent = [], candidatures = [], filter = "all", sort = {key:"nom", dir:1};
 let userPos = null, map = null, layer = null, forcedType = null;
 
 const storage = {
@@ -386,13 +454,15 @@ const storage = {
   async set(k,v){ try{ await window.storage?.set(k, JSON.stringify(v)); }catch{} }
 };
 async function load(){
-  families = (await storage.get("fi:families:v2")) || SEED.map(f=>({...f}));
+  families = (await storage.get("fi:families:v3")) || SEED.map(f=>({...f}));
   recent = (await storage.get("fi:recent")) || [];
-  renderStats(); renderAdmin(); renderRecent();
+  candidatures = (await storage.get("fi:candidatures")) || [];
+  renderStats(); renderAdmin(); renderRecent(); renderCandidatures();
   if(location.hash==="#admin") go("admin");
   if(location.hash==="#hash") hashHelper();
 }
-const save = () => storage.set("fi:families:v2", families);
+const save = () => storage.set("fi:families:v3", families);
+const saveCand = () => storage.set("fi:candidatures", candidatures);
 
 /* ---------- Navigation ---------- */
 function go(v){
@@ -480,26 +550,19 @@ async function findFamilies(){
   const box=document.getElementById("results");
   if(!cand.length){ box.innerHTML=`<div class="empty">Aucune ${type} active pour le moment.<br>Contacte l'équipe ICC pour être orienté.</div>`; go("results"); return; }
 
-  box.innerHTML=`<div class="empty">Calcul des trajets à pied et en voiture…</div>`;
+  box.innerHTML=`<div class="empty">Calcul des trajets en voiture…</div>`;
   go("results");
 
   const coords = `${userPos.lng},${userPos.lat};` + cand.map(f=>`${f.lng},${f.lat}`).join(";");
-  const table = async (profile)=>{
-    const r = await fetch(`https://routing.openstreetmap.de/${profile}/table/v1/driving/${coords}?sources=0&annotations=duration,distance`);
-    const j = await r.json(); if(j.code!=="Ok") throw new Error(j.code); return j;
-  };
-  let car=null, foot=null;
-  try{ [car,foot] = await Promise.all([table("routed-car"), table("routed-foot")]); }
-  catch(e){
-    try{ const r=await fetch(`https://router.project-osrm.org/table/v1/driving/${coords}?sources=0&annotations=duration,distance`); const j=await r.json(); if(j.code==="Ok") car=j; }catch(_){}
-  }
-  if(!car && !foot){ box.innerHTML=`<div class="empty">Le calcul des trajets est momentanément indisponible.<br>Réessaie dans quelques instants.</div>`; return; }
+  const table = async (url)=>{ const r = await fetch(url); const j = await r.json(); if(j.code!=="Ok") throw new Error(j.code); return j; };
+  let car=null;
+  try{ car = await table(`https://routing.openstreetmap.de/routed-car/table/v1/driving/${coords}?sources=0&annotations=duration,distance`); }
+  catch(e){ try{ car = await table(`https://router.project-osrm.org/table/v1/driving/${coords}?sources=0&annotations=duration,distance`); }catch(_){} }
+  if(!car){ box.innerHTML=`<div class="empty">Le calcul des trajets est momentanément indisponible.<br>Réessaie dans quelques instants.</div>`; return; }
   cand.forEach((f,i)=>{
-    if(car){ f.carT=car.durations[0][i+1]; f.carD=car.distances[0][i+1]; }
-    if(foot){ f.footT=foot.durations[0][i+1]; f.footD=foot.distances[0][i+1]; }
+    f.carT=car.durations[0][i+1]; f.carD=car.distances[0][i+1];
   });
-  const key = f => f.footD ?? f.carD ?? Infinity;
-  const list = cand.filter(f=>key(f)!==Infinity).sort((x,y)=>key(x)-key(y)).slice(0,3);
+  const list = cand.filter(f=>f.carD!=null).sort((x,y)=>x.carD-y.carD).slice(0,3);
   renderResults(list);
   drawMap(list);
 }
@@ -509,13 +572,12 @@ function renderResults(list){
   const box=document.getElementById("results"); box.innerHTML="";
   list.forEach((f,i)=>{
     const el=document.createElement("div"); el.className="fam"+(i===0?" first":"");
-    const d = f.footD ?? f.carD, lines=[];
-    if(f.footT!=null) lines.push(`🚶 ${fmtMin(f.footT)}`);
-    if(f.carT!=null)  lines.push(`🚗 ${fmtMin(f.carT)}`);
+    const lines=[];
+    if(f.carT!=null) lines.push(`🚗 ${fmtMin(f.carT)}`);
     el.innerHTML=`<div class="rank">${i+1}</div>
       <div><h4>${esc(f.nom)}<span class="tag ${f.type}">${f.type}</span></h4><p>📍 ${esc(f.zone)}${f.resp?" · "+esc(f.resp):""}</p>
         <div class="btn-row"><button class="btn btn-wa btn-sm">Rejoindre</button></div></div>
-      <div class="dist">${fmtKm(d)}${lines.map(l=>`<small>${l}</small>`).join("")}</div>`;
+      <div class="dist">${fmtKm(f.carD)}${lines.map(l=>`<small>${l}</small>`).join("")}</div>`;
     el.querySelector("button").onclick=()=>askJoin(f);
     box.appendChild(el);
   });
@@ -532,6 +594,34 @@ function askJoin(f){
   document.getElementById("join-name").textContent=f.nom;
   document.getElementById("join-go").onclick=()=>{ closeModal("m-join"); if(f.wa) window.open(f.wa,"_blank"); else toast("Lien WhatsApp bientôt disponible — contacte l'équipe ICC"); };
   document.getElementById("m-join").classList.add("open");
+}
+function submitForm(kind){
+  const g=id=>document.getElementById(`${kind}-${id}`);
+  const prenom=g("prenom").value.trim(), nom=g("nom").value.trim(), tel=g("tel").value.trim();
+  let ok=check(`f-${kind}-prenom`,!!prenom); ok=check(`f-${kind}-nom`,!!nom)&&ok; ok=check(`f-${kind}-tel`,!!tel)&&ok;
+  if(!ok) return toast("Complète les champs manquants");
+  candidatures.push({id:Date.now(), kind, prenom, nom, tel, ville:g("ville").value.trim(),
+    type: kind==="pilote" ? g("type").value : (g("cap")?.value||""),
+    msg:g("msg").value.trim(), date:new Date().toISOString()});
+  saveCand(); renderCandidatures();
+  ["prenom","nom","tel","ville","msg"].forEach(id=>g(id).value="");
+  toast("Merci ! Ta demande a bien été envoyée 🙏");
+  setTimeout(()=>go("home"),1200);
+}
+function renderCandidatures(){
+  const el=document.getElementById("cand-count"); if(el) el.textContent = candidatures.length;
+  const tb=document.getElementById("cand-tbody"); if(!tb) return;
+  tb.innerHTML="";
+  if(!candidatures.length){ tb.innerHTML=`<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:24px">Aucune candidature reçue pour le moment.</td></tr>`; return; }
+  [...candidatures].sort((a,b)=>b.date.localeCompare(a.date)).forEach(c=>{
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td>${new Date(c.date).toLocaleDateString("fr-FR")}</td>
+      <td><span class="tag ${c.kind==='pilote'?'FIJ':'FI'}" style="margin:0">${c.kind==="pilote"?"Pilote":"Hôte"}</span>${c.type?` <small>(${c.type})</small>`:""}</td>
+      <td><b>${esc(c.prenom)} ${esc(c.nom)}</b></td><td><a href="tel:${esc(c.tel)}">${esc(c.tel)}</a></td><td>${esc(c.ville)||"—"}</td>
+      <td><button class="btn btn-danger btn-sm">Supprimer</button></td>`;
+    tr.querySelector("button").onclick=()=>{ if(confirm("Supprimer cette candidature ?")){ candidatures=candidatures.filter(x=>x.id!==c.id); saveCand(); renderCandidatures(); } };
+    tb.appendChild(tr);
+  });
 }
 function drawMap(list){
   if(!window.L) return;
@@ -553,6 +643,12 @@ async function unlock(){
   else document.getElementById("pw-err").style.display="block";
 }
 function lockAdmin(){ document.getElementById("pw").value=""; document.getElementById("lock").style.display="block"; document.getElementById("adminbody").style.display="none"; history.replaceState(null,"",location.pathname); go("home"); }
+function adminTab(t){
+  document.getElementById("admin-fam").style.display = t==="fam" ? "block" : "none";
+  document.getElementById("admin-cand").style.display = t==="cand" ? "block" : "none";
+  document.getElementById("tab-fam").classList.toggle("on", t==="fam");
+  document.getElementById("tab-cand").classList.toggle("on", t==="cand");
+}
 async function hashHelper(){ const p=prompt("Nouveau mot de passe admin :"); if(p){ prompt("Copie cette empreinte dans ADMIN_HASH :", await sha256(p)); } }
 
 document.querySelectorAll("#filters .chip").forEach(c=>c.onclick=()=>{ filter=c.dataset.f; document.querySelectorAll("#filters .chip").forEach(x=>x.classList.toggle("on",x===c)); renderAdmin(); });
