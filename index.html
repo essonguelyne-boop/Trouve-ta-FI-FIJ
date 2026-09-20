@@ -53,8 +53,9 @@
   .fij .cta{background:linear-gradient(135deg,var(--fij2),var(--fij))}
   .hero .meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:var(--muted);font-size:13px}
   .hero .meta b{color:var(--text);font-size:20px;display:block;line-height:1}
-  .schedule{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(4px);padding:9px 14px;border-radius:999px;font-size:14px;color:#EAF1F8;margin-bottom:4px}
-  .schedule b{color:inherit}
+  .schedule{display:inline-flex;align-items:center;gap:10px;background:rgba(12,24,36,.55);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);padding:11px 20px;border-radius:999px;font-size:14px;line-height:1;white-space:nowrap;color:#EAF1F8;margin-bottom:6px}
+  .schedule .sd-ic{font-size:16px;line-height:1;display:inline-block}
+  .schedule b{color:inherit;font-weight:800}
   .stepnum{position:absolute;right:20px;top:20px;font-size:12px;letter-spacing:.2em;color:rgba(255,255,255,.55);font-weight:700}
   .about{padding:34px 22px}
   .about .in{max-width:960px;margin:0 auto}
@@ -135,7 +136,7 @@
   .lock img{width:88px;margin-bottom:14px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.4))}
 
   /* ---------- Nav / modal / toast ---------- */
-  .nav{position:fixed;left:0;right:0;bottom:0;height:var(--nav);background:rgba(12,24,36,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:50}
+  .nav{position:fixed;left:0;right:0;bottom:0;height:var(--nav);background:rgba(12,24,36,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom);z-index:50}
   .nav button{background:none;color:var(--muted);font-size:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border-radius:0}
   .nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .nav button.on{color:var(--text)}
@@ -166,7 +167,7 @@
       <span class="kicker">Impact Centre Chrétien · Cellule locale</span>
       <h1>Découvrez la <strong>Famille d'Impact</strong></h1>
       <p>Chaque semaine, une famille de maison t'ouvre ses portes pour partager un repas, méditer la Parole et prier les uns pour les autres. Pas besoin d'être déjà croyant ni de tout connaître de la Bible : viens comme tu es, dans une ambiance simple et chaleureuse, à quelques minutes de chez toi.</p>
-      <div class="schedule">🗓️ Tous les <b>jeudis</b>, de <b>19h30 à 21h00</b></div>
+      <div class="schedule"><span class="sd-ic">🗓️</span> Tous les <b>jeudis</b>, de <b>19h30 à 21h00</b></div>
       <button class="cta" onclick="startSearch('FI')">Trouver ma FI →</button>
       <div class="meta"><div><b id="st-fi">—</b>Familles d'Impact</div><div><b id="st-zones">—</b>zones couvertes</div><div><b id="st-membres">—</b>membres</div></div>
     </div>
@@ -178,7 +179,7 @@
       <span class="kicker">Jeunesse · moins de 26 ans</span>
       <h1>Rejoignez la <strong>Famille d'Impact Jeunes</strong></h1>
       <p>Un lieu pour connecter la jeunesse autour de la Bible, de partages motivants et d'une foi vivante adaptée aux défis de notre époque.</p>
-      <div class="schedule">🗓️ Tous les <b>mardis</b>, de <b>19h30 à 21h00</b></div>
+      <div class="schedule"><span class="sd-ic">🗓️</span> Tous les <b>mardis</b>, de <b>19h30 à 21h00</b></div>
       <button class="cta" onclick="startSearch('FIJ')">Découvrir la FIJ →</button>
       <div class="meta"><div><b id="st-fij">—</b>Familles d'Impact Jeunes</div></div>
     </div>
@@ -211,12 +212,12 @@
     </div>
 
     <div class="card">
-      <h3>Identité</h3>
-      <div class="row">
-        <div class="field" id="f-prenom"><label>Prénom *</label><input id="prenom" placeholder="Ton prénom" autocomplete="given-name"><div class="err">Prénom requis</div></div>
-        <div class="field" id="f-nom"><label>Nom *</label><input id="nom" placeholder="Ton nom" autocomplete="family-name"><div class="err">Nom requis</div></div>
+      <h3>Ta tranche d'âge</h3>
+      <div class="typebox">
+        <button id="age-fi" class="on FI" onclick="pickAge('FI')">J'ai 26 ans ou plus</button>
+        <button id="age-fij" class="FIJ" onclick="pickAge('FIJ')">J'ai moins de 26 ans</button>
       </div>
-      <div class="field" id="f-ddn"><label>Date de naissance *</label><input id="ddn" type="date"><div class="err">Date de naissance requise</div><div class="hint" id="age-hint">La FI accueille les 26 ans et plus, la FIJ les moins de 26 ans.</div></div>
+      <p class="hint">La FI accueille les 26 ans et plus, la FIJ les moins de 26 ans.</p>
     </div>
 
     <div class="card">
@@ -360,7 +361,6 @@
   <button data-v="home" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>Accueil</button>
   <button data-v="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Recherche</button>
   <button data-v="results"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Résultats</button>
-  <button data-v="hote"><svg viewBox="0 0 24 24"><path d="M3 12l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>Accueillir</button>
   <button data-v="pilote"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>Pilote</button>
 </nav>
 
@@ -451,7 +451,7 @@ const SEED = [
 const ADMIN_HASH = "0c59e405607552899fe446695148d2d5d76cf66ce486d002c6206a2340560a58";
 
 let families = [], recent = [], candidatures = [], filter = "all", sort = {key:"nom", dir:1};
-let userPos = null, map = null, layer = null, forcedType = null;
+let userPos = null, map = null, layer = null, forcedType = "FI", hasSearched = false;
 
 const storage = {
   async get(k){ try{ const r = await window.storage?.get(k); return r ? JSON.parse(r.value) : null; }catch{ return null; } },
@@ -473,11 +473,14 @@ function go(v){
   document.querySelectorAll(".view").forEach(s=>s.classList.toggle("active", s.id==="v-"+v));
   document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("on", b.dataset.v===v));
   window.scrollTo({top:0});
-  if(v==="results" && map) setTimeout(()=>map.invalidateSize(),50);
+  if(v==="results"){
+    if(!hasSearched) showOverview();
+    if(map) setTimeout(()=>map.invalidateSize(),50);
+  }
 }
 document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>go(b.dataset.v));
 window.addEventListener("hashchange",()=>{ if(location.hash==="#admin") go("admin"); });
-function startSearch(type){ forcedType=type; document.documentElement.style.setProperty("--accent", type==="FIJ"?"var(--fij)":"var(--fi)"); go("search"); }
+function startSearch(type){ go("search"); pickAge(type); }
 function toast(m){ const t=document.getElementById("toast"); t.textContent=m; t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),2200); }
 function closeModal(id){ document.getElementById(id).classList.remove("open"); }
 document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{ if(e.target===m) m.classList.remove("open"); }));
@@ -530,27 +533,28 @@ function useMyPosition(){
 }
 
 /* ---------- Recherche ---------- */
-document.getElementById("ddn").addEventListener("change",e=>{
-  const a=age(e.target.value); const h=document.getElementById("age-hint");
-  h.textContent = a==null ? "" : `${a} ans → ${a<26?"Famille d'Impact Jeunes (FIJ)":"Famille d'Impact (FI)"}`;
-});
-function age(d){ if(!d) return null; const b=new Date(d), n=new Date(); let a=n.getFullYear()-b.getFullYear(); if(n<new Date(n.getFullYear(),b.getMonth(),b.getDate())) a--; return a; }
+function pickAge(type){
+  forcedType = type;
+  document.getElementById("age-fi").classList.toggle("on", type==="FI");
+  document.getElementById("age-fij").classList.toggle("on", type==="FIJ");
+  document.documentElement.style.setProperty("--accent", type==="FIJ"?"var(--fij)":"var(--fi)");
+}
 function check(fieldId, ok){ const f=document.getElementById(fieldId); f.classList.toggle("invalid",!ok); f.querySelector("input")?.classList.toggle("error",!ok); return ok; }
 function dist(a,b){ const R=6371, dLat=(b.lat-a.lat)*Math.PI/180, dLng=(b.lng-a.lng)*Math.PI/180;
   const s=Math.sin(dLat/2)**2+Math.cos(a.lat*Math.PI/180)*Math.cos(b.lat*Math.PI/180)*Math.sin(dLng/2)**2; return 2*R*Math.asin(Math.sqrt(s)); }
 
 async function findFamilies(){
-  const prenom=document.getElementById("prenom").value.trim(), nom=document.getElementById("nom").value.trim(), ddn=document.getElementById("ddn").value;
-  let ok = check("f-prenom",!!prenom); ok = check("f-nom",!!nom) && ok; ok = check("f-ddn",!!ddn) && ok; ok = check("f-adr",!!userPos) && ok;
-  if(!ok) return toast("Complète les champs manquants");
-  const a=age(ddn), type = a<26 ? "FIJ" : "FI";
+  const ok = check("f-adr",!!userPos);
+  if(!ok) return toast("Entre ton adresse pour continuer");
+  hasSearched = true;
+  const type = forcedType || "FI";
   document.documentElement.style.setProperty("--accent", type==="FIJ"?"var(--fij)":"var(--fi)");
-  recent = [{prenom,nom,ddn,adresse:userPos.label,lat:userPos.lat,lng:userPos.lng}, ...recent.filter(r=>r.adresse!==userPos.label)].slice(0,3);
+  recent = [{type,adresse:userPos.label,lat:userPos.lat,lng:userPos.lng}, ...recent.filter(r=>r.adresse!==userPos.label)].slice(0,3);
   storage.set("fi:recent",recent); renderRecent();
 
   const cand = families.filter(f=>f.actif && f.type===type).map(f=>({...f,d:dist(userPos,f)})).sort((x,y)=>x.d-y.d).slice(0,6);
   document.getElementById("res-title").textContent = type==="FIJ" ? "Les FIJ les plus proches" : "Les FI les plus proches";
-  document.getElementById("res-sub").textContent = `${prenom}, voici les ${type==="FIJ"?"Familles d'Impact Jeunes":"Familles d'Impact"} près de chez toi.`;
+  document.getElementById("res-sub").textContent = `Voici les ${type==="FIJ"?"Familles d'Impact Jeunes":"Familles d'Impact"} près de chez toi.`;
   const box=document.getElementById("results");
   if(!cand.length){ box.innerHTML=`<div class="empty">Aucune ${type} active pour le moment.<br>Contacte l'équipe ICC pour être orienté.</div>`; go("results"); return; }
 
@@ -589,9 +593,8 @@ function renderResults(list){
 function renderRecent(){
   const w=document.getElementById("recent-wrap"), r=document.getElementById("recent"); r.innerHTML="";
   w.style.display = recent.length ? "block" : "none";
-  recent.forEach(x=>{ const b=document.createElement("button"); b.textContent=`${x.prenom} · ${x.adresse.split(",")[0]}`;
-    b.onclick=()=>{ document.getElementById("prenom").value=x.prenom; document.getElementById("nom").value=x.nom; document.getElementById("ddn").value=x.ddn;
-      document.getElementById("adr").value=x.adresse; userPos={lat:x.lat,lng:x.lng,label:x.adresse}; setHint(true); document.getElementById("ddn").dispatchEvent(new Event("change")); };
+  recent.forEach(x=>{ const b=document.createElement("button"); b.textContent=`${x.type} · ${x.adresse.split(",")[0]}`;
+    b.onclick=()=>{ pickAge(x.type); document.getElementById("adr").value=x.adresse; userPos={lat:x.lat,lng:x.lng,label:x.adresse}; setHint(true); };
     r.appendChild(b); });
 }
 function askJoin(f){
@@ -627,16 +630,32 @@ function renderCandidatures(){
     tb.appendChild(tr);
   });
 }
-function drawMap(list){
+function drawMap(list, showMe=true){
   if(!window.L) return;
   if(!map){ map=L.map("map",{zoomControl:false}); L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{attribution:"© OpenStreetMap © CARTO",maxZoom:19}).addTo(map); }
   if(layer) layer.remove(); layer=L.layerGroup().addTo(map);
   const pin=c=>L.divIcon({className:"",html:`<div class="pin ${c}"></div>`,iconSize:[14,14],iconAnchor:[7,7]});
-  const pts=[[userPos.lat,userPos.lng]];
-  L.marker([userPos.lat,userPos.lng],{icon:pin("me")}).bindPopup("Toi").addTo(layer);
+  const pts=[];
+  if(showMe && userPos){ pts.push([userPos.lat,userPos.lng]); L.marker([userPos.lat,userPos.lng],{icon:pin("me")}).bindPopup("Toi").addTo(layer); }
   // Les familles sont affichées par un cercle de zone (~600 m), pas par un point précis
   list.forEach(f=>{ L.circle([f.lat,f.lng],{radius:600,color:f.type==="FIJ"?"#12B85B":"#EE7A45",weight:2,fillOpacity:.18}).bindPopup(`${f.nom} · ${f.zone}`).addTo(layer); pts.push([f.lat,f.lng]); });
-  setTimeout(()=>{ map.invalidateSize(); map.fitBounds(pts,{padding:[30,30]}); },60);
+  setTimeout(()=>{ map.invalidateSize(); if(pts.length) map.fitBounds(pts,{padding:[30,30]}); },60);
+}
+function showOverview(){
+  const list = families.filter(f=>f.actif);
+  document.getElementById("res-title").textContent = "Toutes les familles actives";
+  document.getElementById("res-sub").textContent = "Aperçu de toutes les FI et FIJ actuellement actives. Lance une recherche pour trouver les plus proches de chez toi.";
+  drawMap(list, false);
+  const box=document.getElementById("results"); box.innerHTML="";
+  list.sort((a,b)=>a.zone.localeCompare(b.zone)).forEach(f=>{
+    const el=document.createElement("div"); el.className="fam";
+    el.innerHTML=`<div class="rank" style="background:${f.type==='FIJ'?'rgba(18,184,91,.18)':'rgba(238,122,69,.18)'};color:${f.type==='FIJ'?'var(--fij2)':'var(--fi2)'}">${f.type}</div>
+      <div><h4>${esc(f.nom)}</h4><p>📍 ${esc(f.zone)}${f.resp?" · "+esc(f.resp):""}</p>
+        <div class="btn-row"><button class="btn btn-wa btn-sm">Rejoindre</button></div></div>
+      <div class="dist"></div>`;
+    el.querySelector("button").onclick=()=>askJoin(f);
+    box.appendChild(el);
+  });
 }
 
 /* ---------- Admin (accès #admin + mot de passe) ---------- */
