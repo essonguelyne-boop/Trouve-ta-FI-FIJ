@@ -417,32 +417,32 @@
    n'est stockée ici ; lat/lng servent uniquement au calcul.
    ========================================================= */
 const SEED = [
-  {id:1,  nom:"FIJ Timothée Centre", type:"FIJ", zone:"Saint-Genès, Bordeaux",  lat:44.8240, lng:-0.5725, resp:"Juliette Renvoisé",                 wa:"https://chat.whatsapp.com/Hchj3NtfV0RF9oMtt44bW1", actif:true,  membres:38},
-  {id:2,  nom:"FIJ Timothée Sud",    type:"FIJ", zone:"Bordeaux Sud",           lat:44.8240, lng:-0.5725, resp:"Yédidia Mognon",                     wa:"https://chat.whatsapp.com/GXNG8KEZllfFC0lYwEgi63", actif:true, membres:null},
-  {id:3,  nom:"FIJ Paul",            type:"FIJ", zone:"Talence",                lat:44.8065, lng:-0.5960, resp:"Joaline Vertueil",                   wa:"https://chat.whatsapp.com/IKrGMJvf1Vq4sWHRef4COO", actif:true,  membres:26},
-  {id:4,  nom:"FIJ Néhémie",         type:"FIJ", zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Ismaël",                             wa:"https://chat.whatsapp.com/FzVIkcxGFMr7h8oocCu0oV", actif:true,  membres:null},
-  {id:5,  nom:"FI Néhémie",          type:"FI",  zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Dudley & Phalande Cadet",            wa:"https://chat.whatsapp.com/I6y4vEsc6VrCB2S7mWAKKf", actif:true,  membres:10},
-  {id:6,  nom:"FI David",            type:"FI",  zone:"Bordeaux Bastide",       lat:44.8450, lng:-0.5520, resp:"Christelle Amonkan",                 wa:"https://chat.whatsapp.com/GozKph3XA3kGl24RxGZadQ", actif:true,  membres:13},
-  {id:7,  nom:"FI Joseph",           type:"FI",  zone:"Le Haillan",             lat:44.8633, lng:-0.6650, resp:"Gaëlle Mutombo",                     wa:"https://chat.whatsapp.com/CfupD35XytE59yoF98kav5", actif:true,  membres:6},
-  {id:8,  nom:"FI Doxa",             type:"FI",  zone:"Grand Parc, Bordeaux",   lat:44.8594, lng:-0.5818, resp:"Marietta Rogers / Madeleine",        wa:"https://chat.whatsapp.com/LJ0VqS0qiZ44c9V65nwss2", actif:true,  membres:14},
-  {id:9,  nom:"FI Samuel",           type:"FI",  zone:"Blanquefort",            lat:44.9080, lng:-0.6280, resp:"Laetitia Nkibikondolo",              wa:"https://chat.whatsapp.com/DHoN0kWiyUjCDZk41XFcCW", actif:true,  membres:9},
-  {id:10, nom:"FI Buisson Ardent",   type:"FI",  zone:"Bacalan / Cité du Vin",  lat:44.8605, lng:-0.5510, resp:"Angela Kennedy",                     wa:"https://chat.whatsapp.com/ID1j5wBaeYk1XDr5bWk0fD", actif:true, membres:15},
-  {id:11, nom:"FIJ Buisson Ardent",  type:"FIJ", zone:"Bacalan / Cité du Vin",  lat:44.8605, lng:-0.5510, resp:"Christian Ekomie-Bie",               wa:"https://chat.whatsapp.com/LNzjoFfntHK6SEgHOpTmFV", actif:true,  membres:null},
-  {id:12, nom:"FI Jean David",       type:"FI",  zone:"Bassens",                lat:44.9020, lng:-0.5320, resp:"Gabin Ahiave",                       wa:"https://chat.whatsapp.com/GjgSkE8TugMIouCprljbyt", actif:true,  membres:10},
-  {id:13, nom:"FI Gédéon",           type:"FI",  zone:"Haut Cenon",             lat:44.8460, lng:-0.5330, resp:"Yves Mankou",                        wa:"https://chat.whatsapp.com/HAM3BupTXcFG9pTFNoqTod", actif:true,  membres:30},
-  {id:14, nom:"FI Amour",            type:"FI",  zone:"Lormont",                lat:44.8780, lng:-0.5220, resp:"Candide Houngnandan",                wa:"https://chat.whatsapp.com/G3n7s0kZHs4CU1zTzryvX8", actif:true, membres:30},
-  {id:15, nom:"FI Bègles",           type:"FI",  zone:"Bègles / Villenave-d'Ornon", lat:44.8080, lng:-0.5490, resp:"Doliane",                        wa:"https://chat.whatsapp.com/KzLotIsAmi38p3ClFzvDhm", actif:true,  membres:9},
-  {id:16, nom:"FIJ Esaïe",           type:"FIJ", zone:"Mérignac",               lat:44.8420, lng:-0.6450, resp:"Nepthalie Desmornes",                wa:"https://chat.whatsapp.com/CvF6ESVyILk0XtvldSLSM4", actif:true,  membres:13},
-  {id:17, nom:"FIJ Obed",            type:"FIJ", zone:"Bordeaux Centre",        lat:44.8378, lng:-0.5792, resp:"Renée Ogoula",                       wa:"https://chat.whatsapp.com/CU3pH98jo742dHJyPzIK4w", actif:true,  membres:null},
-  {id:18, nom:"FIJ Éclat",           type:"FIJ", zone:"Lormont",                lat:44.8780, lng:-0.5220, resp:"Mickaël Ngan-Otsaghe",                            wa:"https://chat.whatsapp.com/DoFVHpoklskKdYY5ZDZXS5", actif:true,  membres:null},
-  {id:19, nom:"FI Esther",           type:"FI",  zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Abigaël Mambote",                    wa:"", actif:false, membres:22},
-  {id:20, nom:"FIJ Esther",          type:"FIJ", zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Ishnel & Anaëlle",                   wa:"https://chat.whatsapp.com/JSVBKlYrlNtAGiVSPmeXoL", actif:true,  membres:null},
-  {id:21, nom:"FI Dorcas",           type:"FI",  zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Marie-Hervé Adjien",                 wa:"https://chat.whatsapp.com/Iypexuypcl7IxWOGyuYvAK", actif:true,  membres:2},
-  {id:22, nom:"FI Épaphras",         type:"FI",  zone:"Pessac",                 lat:44.8060, lng:-0.6310, resp:"Marie-Sidonie Manesson",             wa:"https://chat.whatsapp.com/CxYVwhovMTmARwZu1X2zFc", actif:true,  membres:17},
-  {id:23, nom:"FI Mouvement",        type:"FI",  zone:"Périgueux",              lat:45.1848, lng:0.7212,  resp:"Maëva Deme",                       wa:"https://chat.whatsapp.com/Fqvd7XwVZyIDliWyxZxHP7", actif:true,  membres:13},
-  {id:24, nom:"FI Josué",            type:"FI",  zone:"Bergerac",               lat:44.8508, lng:0.4813,  resp:"Épiphanie Matchon & Valérie Fleret", wa:"https://chat.whatsapp.com/K89EQOqR6PqHw3Fh1svmUs", actif:true,  membres:8},
-  {id:26, nom:"FI Saint-Loubès",        type:"FI",  zone:"Saint-Loubès",           lat:44.9150, lng:-0.4280, resp:"Nelly",                              wa:"https://chat.whatsapp.com/KNrijc4rfzD5TbCw0pLfSK", actif:true,  membres:null},
-  {id:25, nom:"FI Libourne",         type:"FI",  zone:"Libourne",               lat:44.9150, lng:-0.2420, resp:"Merveil & Jocelyne Maliro",          wa:"", actif:true,  membres:8},
+  {id:1, nom:"FIJ Timothée Centre", type:"FIJ", zone:"Saint-Genès, Bordeaux", lat:44.824, lng:-0.5725, resp:"Juliette Renvoisé", wa:"https://chat.whatsapp.com/Hchj3NtfV0RF9oMtt44bW1", actif:true, membres:38},
+  {id:2, nom:"FIJ Timothée Sud", type:"FIJ", zone:"Bordeaux Victoire", lat:44.824, lng:-0.5725, resp:"Yédidia Mognon", wa:"https://chat.whatsapp.com/GXNG8KEZllfFC0lYwEgi63", actif:true, membres:null},
+  {id:3, nom:"FIJ Paul", type:"FIJ", zone:"Talence", lat:44.8065, lng:-0.596, resp:"Joaline Vertueil", wa:"https://chat.whatsapp.com/IKrGMJvf1Vq4sWHRef4COO", actif:true, membres:26},
+  {id:4, nom:"FIJ Néhémie", type:"FIJ", zone:"Quai de Brazza", lat:44.845, lng:-0.552, resp:"Ismaël", wa:"https://chat.whatsapp.com/FzVIkcxGFMr7h8oocCu0oV", actif:true, membres:null},
+  {id:5, nom:"FI Néhémie", type:"FI", zone:"Quai de Brazza", lat:44.845, lng:-0.552, resp:"Dudley & Phalande Cadet", wa:"https://chat.whatsapp.com/I6y4vEsc6VrCB2S7mWAKKf", actif:true, membres:10},
+  {id:6, nom:"FI David", type:"FI", zone:"Bordeaux Bastide", lat:44.845, lng:-0.552, resp:"Christelle Amonkan", wa:"https://chat.whatsapp.com/GozKph3XA3kGl24RxGZadQ", actif:true, membres:13},
+  {id:7, nom:"FI Joseph", type:"FI", zone:"Le Haillan", lat:44.8633, lng:-0.665, resp:"Gaëlle Mutombo", wa:"https://chat.whatsapp.com/CfupD35XytE59yoF98kav5", actif:true, membres:6},
+  {id:8, nom:"FI Doxa", type:"FI", zone:"Grand Parc, Bordeaux", lat:44.8594, lng:-0.5818, resp:"Marietta Rogers / Madeleine", wa:"https://chat.whatsapp.com/LJ0VqS0qiZ44c9V65nwss2", actif:true, membres:14},
+  {id:9, nom:"FI Samuel", type:"FI", zone:"Blanquefort", lat:44.908, lng:-0.628, resp:"Laetitia Nkibikondolo", wa:"https://chat.whatsapp.com/DHoN0kWiyUjCDZk41XFcCW", actif:true, membres:9},
+  {id:10, nom:"FI Buisson Ardent", type:"FI", zone:"Bacalan / Cité du Vin", lat:44.8605, lng:-0.551, resp:"Angela Kennedy", wa:"https://chat.whatsapp.com/ID1j5wBaeYk1XDr5bWk0fD", actif:true, membres:15},
+  {id:11, nom:"FIJ Buisson Ardent", type:"FIJ", zone:"Bacalan / Cité du Vin", lat:44.8605, lng:-0.551, resp:"Christian Ekomie-Bie", wa:"https://chat.whatsapp.com/LNzjoFfntHK6SEgHOpTmFV", actif:true, membres:null},
+  {id:12, nom:"FI Jean David", type:"FI", zone:"Bassens", lat:44.902, lng:-0.532, resp:"Gabin Ahiave", wa:"https://chat.whatsapp.com/GjgSkE8TugMIouCprljbyt", actif:true, membres:10},
+  {id:13, nom:"FI Gédéon", type:"FI", zone:"Haut Cenon", lat:44.846, lng:-0.533, resp:"Yves Mankou", wa:"https://chat.whatsapp.com/HAM3BupTXcFG9pTFNoqTod", actif:true, membres:30},
+  {id:14, nom:"FI Amour", type:"FI", zone:"Lormont", lat:44.878, lng:-0.522, resp:"Candide Houngnandan", wa:"https://chat.whatsapp.com/G3n7s0kZHs4CU1zTzryvX8", actif:true, membres:30},
+  {id:15, nom:"FI Bègles", type:"FI", zone:"Bègles / Villenave-d'Ornon", lat:44.808, lng:-0.549, resp:"Doliane", wa:"https://chat.whatsapp.com/KzLotIsAmi38p3ClFzvDhm", actif:true, membres:9},
+  {id:16, nom:"FIJ Esaïe", type:"FIJ", zone:"Mérignac", lat:44.842, lng:-0.645, resp:"Nepthalie Desmornes", wa:"https://chat.whatsapp.com/CvF6ESVyILk0XtvldSLSM4", actif:true, membres:13},
+  {id:17, nom:"FIJ Obed", type:"FIJ", zone:"Bordeaux Centre", lat:44.8378, lng:-0.5792, resp:"Renée Ogoula", wa:"https://chat.whatsapp.com/CU3pH98jo742dHJyPzIK4w", actif:true, membres:null},
+  {id:18, nom:"FIJ Éclat", type:"FIJ", zone:"Lormont", lat:44.878, lng:-0.522, resp:"Mickaël Ngan-Otsaghe", wa:"https://chat.whatsapp.com/DoFVHpoklskKdYY5ZDZXS5", actif:true, membres:null},
+  {id:19, nom:"FI Esther", type:"FI", zone:"Pessac", lat:44.806, lng:-0.631, resp:"Abigaël Mambote", wa:"", actif:false, membres:22},
+  {id:20, nom:"FIJ Esther", type:"FIJ", zone:"Pessac", lat:44.806, lng:-0.631, resp:"Ishnel & Anaëlle", wa:"https://chat.whatsapp.com/JSVBKlYrlNtAGiVSPmeXoL", actif:true, membres:null},
+  {id:21, nom:"FI Dorcas", type:"FI", zone:"Pessac", lat:44.806, lng:-0.631, resp:"Marie-Hervé Adjien", wa:"https://chat.whatsapp.com/Iypexuypcl7IxWOGyuYvAK", actif:true, membres:2},
+  {id:22, nom:"FI Épaphras", type:"FI", zone:"Pessac", lat:44.806, lng:-0.631, resp:"Marie-Sidonie Manesson", wa:"https://chat.whatsapp.com/CxYVwhovMTmARwZu1X2zFc", actif:true, membres:17},
+  {id:23, nom:"FI Mouvement", type:"FI", zone:"Périgueux", lat:45.1848, lng:0.7212, resp:"Maëva Deme", wa:"https://chat.whatsapp.com/Fqvd7XwVZyIDliWyxZxHP7", actif:true, membres:13},
+  {id:24, nom:"FI Josué", type:"FI", zone:"Bergerac", lat:44.8508, lng:0.4813, resp:"Épiphanie Matchon & Valérie Fleret", wa:"https://chat.whatsapp.com/K89EQOqR6PqHw3Fh1svmUs", actif:true, membres:8},
+  {id:25, nom:"FI Béthel", type:"FI", zone:"Saint-Loubès", lat:44.915, lng:-0.428, resp:"Nelly", wa:"https://chat.whatsapp.com/KNrijc4rfzD5TbCw0pLfSK", actif:true, membres:null},
+  {id:26, nom:"FI Libourne", type:"FI", zone:"Libourne", lat:44.915, lng:-0.242, resp:"Merveil & Jocelyne Maliro", wa:"https://chat.whatsapp.com/J1ikdjVATqi8lBKUPlaoIz", actif:true, membres:8},
 ];
 
 /* Mot de passe admin : empreinte SHA-256. Par défaut "FI2026".
@@ -458,14 +458,14 @@ const storage = {
   async set(k,v){ try{ await window.storage?.set(k, JSON.stringify(v)); }catch{} }
 };
 async function load(){
-  families = (await storage.get("fi:families:v3")) || SEED.map(f=>({...f}));
+  families = (await storage.get("fi:families:v4")) || SEED.map(f=>({...f}));
   recent = (await storage.get("fi:recent")) || [];
   candidatures = (await storage.get("fi:candidatures")) || [];
   renderStats(); renderAdmin(); renderRecent(); renderCandidatures();
   if(location.hash==="#admin") go("admin");
   if(location.hash==="#hash") hashHelper();
 }
-const save = () => storage.set("fi:families:v3", families);
+const save = () => storage.set("fi:families:v4", families);
 const saveCand = () => storage.set("fi:candidatures", candidatures);
 
 /* ---------- Navigation ---------- */
@@ -583,7 +583,7 @@ function renderResults(list){
     const lines=[];
     if(f.carT!=null) lines.push(`🚗 ${fmtMin(f.carT)}`);
     el.innerHTML=`<div class="rank">${i+1}</div>
-      <div><h4>${esc(f.nom)}<span class="tag ${f.type}">${f.type}</span></h4><p>📍 ${esc(f.zone)}${f.resp?" · "+esc(f.resp):""}</p>
+      <div><h4>${esc(f.nom)}<span class="tag ${f.type}">${f.type}</span></h4><p>📍 ${esc(f.zone)}</p>
         <div class="btn-row"><button class="btn btn-wa btn-sm">Rejoindre</button></div></div>
       <div class="dist">${fmtKm(f.carD)}${lines.map(l=>`<small>${l}</small>`).join("")}</div>`;
     el.querySelector("button").onclick=()=>askJoin(f);
@@ -650,7 +650,7 @@ function showOverview(){
   list.sort((a,b)=>a.zone.localeCompare(b.zone)).forEach(f=>{
     const el=document.createElement("div"); el.className="fam";
     el.innerHTML=`<div class="rank" style="background:${f.type==='FIJ'?'rgba(18,184,91,.18)':'rgba(238,122,69,.18)'};color:${f.type==='FIJ'?'var(--fij2)':'var(--fi2)'}">${f.type}</div>
-      <div><h4>${esc(f.nom)}</h4><p>📍 ${esc(f.zone)}${f.resp?" · "+esc(f.resp):""}</p>
+      <div><h4>${esc(f.nom)}</h4><p>📍 ${esc(f.zone)}</p>
         <div class="btn-row"><button class="btn btn-wa btn-sm">Rejoindre</button></div></div>
       <div class="dist"></div>`;
     el.querySelector("button").onclick=()=>askJoin(f);
